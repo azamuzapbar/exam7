@@ -1,0 +1,14 @@
+<h>Гостевая книга</h>
+<form method="POST" action = "/">
+    {%csrf_token%}
+    {{form.title}}
+    <input type = "submit" name = "Create Task">
+</form>
+
+{% for guest in guests%}
+    <div>
+        <a href=" {%url 'update_task' guest.id %} ">Update</a>
+        <a href=" {%url 'delete' guest.id %} ">delete</a>
+        <p>{{guest.author}}</p>
+    </div>
+{% endfor %}
